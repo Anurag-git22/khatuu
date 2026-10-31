@@ -3,7 +3,7 @@ import site from '../data/siteData'
 export default function Hero() {
   return (
     <section className="hero" aria-label="Introduction">
-      <img src={site.hero.image} alt={site.hero.alt} />
+      <img src={site.hero.image} alt={site.hero.alt} fetchPriority="high" decoding="async" />
       <div className="hero-veil" aria-hidden="true" />
       <div className="wrap hero-copy">
         <h1>{site.name}</h1>

@@ -13,6 +13,7 @@ import {
   MdYard,
 } from 'react-icons/md'
 import site from '../data/siteData'
+import CardScroller from './CardScroller'
 import Reveal from './Reveal'
 
 const icons = {
@@ -37,7 +38,7 @@ export default function Amenities() {
         <p className="kicker">On the property</p>
         <h2 className="section-title">Amenities</h2>
         <p className="lede">{site.amenitiesIntro}</p>
-        <div className="amenity-grid">
+        <CardScroller className="amenity-grid" compact>
           {site.amenities.map((item) => {
             const Icon = icons[item.icon]
             return (
@@ -48,7 +49,7 @@ export default function Amenities() {
               </Reveal>
             )
           })}
-        </div>
+        </CardScroller>
       </div>
     </section>
   )

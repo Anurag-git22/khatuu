@@ -1,4 +1,5 @@
 import site from '../data/siteData'
+import CardScroller from './CardScroller'
 import Reveal from './Reveal'
 
 export default function Location() {
@@ -20,14 +21,14 @@ export default function Location() {
           {site.location.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <ul className="place-list">
+          <CardScroller as="ul" className="place-list">
             {site.location.nearby.map((place) => (
               <li key={place.name}>
                 <b>{place.name}</b>
                 <span>{place.distance}</span>
               </li>
             ))}
-          </ul>
+          </CardScroller>
         </Reveal>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import site from '../data/siteData'
+import CardScroller from './CardScroller'
 import Reveal from './Reveal'
 
 function stars(rating) {
@@ -12,7 +13,7 @@ export default function Reviews() {
         <p className="kicker">Guests</p>
         <h2 className="section-title">Reviews</h2>
         <p className="lede">{site.reviewsIntro}</p>
-        <div className="review-grid">
+        <CardScroller className="review-grid">
           {site.reviews.map((review) => (
             <Reveal as="blockquote" className="review" key={review.author}>
               <div className="stars" aria-label={`${review.rating} out of 5 stars`}>
@@ -24,7 +25,7 @@ export default function Reviews() {
               </cite>
             </Reveal>
           ))}
-        </div>
+        </CardScroller>
       </div>
     </section>
   )

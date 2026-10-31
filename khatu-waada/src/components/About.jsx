@@ -6,7 +6,7 @@ export default function About() {
     <section id="about">
       <div className="wrap about-grid">
         <Reveal>
-          <img src={site.about.image} alt={site.about.alt} loading="lazy" />
+          <img src={site.about.image} alt={site.about.alt} loading="lazy" decoding="async" />
         </Reveal>
         <Reveal>
           <p className="kicker">About</p>

@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import site from '../data/siteData'
+import CardScroller from './CardScroller'
 
 export default function Gallery() {
   const images = site.gallery
   const [index, setIndex] = useState(null)
+  const swipeRef = useRef(null)
   const open = index !== null
 
   const close = useCallback(() => setIndex(null), [])
@@ -31,6 +33,22 @@ export default function Gallery() {
     }
   }, [open, close, showPrev, showNext])
 
+  const onPointerDown = (event) => {
+    if (event.target.closest('button')) {
+      swipeRef.current = null
+      return
+    }
+    swipeRef.current = event.clientX
+  }
+
+  const onPointerUp = (event) => {
+    if (swipeRef.current == null) return
+    const dx = event.clientX - swipeRef.current
+    swipeRef.current = null
+    if (dx > 40) showPrev()
+    if (dx < -40) showNext()
+  }
+
   const current = open ? images[index] : null
 
   return (
@@ -39,7 +57,7 @@ export default function Gallery() {
         <p className="kicker">Photographs</p>
         <h2 className="section-title">Gallery</h2>
         <p className="lede">{site.galleryIntro}</p>
-        <div className="gallery-grid">
+        <CardScroller className="gallery-grid">
           {images.map((image, imageIndex) => (
             <button
               key={image.alt + imageIndex}
@@ -47,10 +65,10 @@ export default function Gallery() {
               onClick={() => setIndex(imageIndex)}
               aria-label={`Open photograph: ${image.alt}`}
             >
-              <img src={image.src} alt={image.alt} loading="lazy" />
+              <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
             </button>
           ))}
-        </div>
+        </CardScroller>
       </div>
 
       {open && current ? (
@@ -61,6 +79,11 @@ export default function Gallery() {
           aria-label="Photograph"
           onClick={(event) => {
             if (event.target === event.currentTarget) close()
+          }}
+          onPointerDown={onPointerDown}
+          onPointerUp={onPointerUp}
+          onPointerCancel={() => {
+            swipeRef.current = null
           }}
         >
           <button type="button" className="lightbox-close" onClick={close} aria-label="Close">

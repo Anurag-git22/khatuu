@@ -13,7 +13,7 @@ export default function Header() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 900) setOpen(false)
+      if (window.innerWidth >= 1024) setOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
@@ -26,17 +26,18 @@ export default function Header() {
           {site.name}
         </a>
         <button
-          className="menu-toggle"
+          className={open ? 'menu-toggle is-open' : 'menu-toggle'}
           type="button"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
+          aria-controls="site-nav"
           onClick={() => setOpen((value) => !value)}
         >
           <span />
           <span />
           <span />
         </button>
-        <nav className={open ? 'nav is-open' : 'nav'} aria-label="Primary">
+        <nav id="site-nav" className={open ? 'nav is-open' : 'nav'} aria-label="Primary">
           {site.nav.map((item) => (
             <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
               {item.label}
