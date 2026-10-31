@@ -1,10 +1,28 @@
+import { useEffect, useState } from 'react'
 import site from '../data/siteData'
 
 const whatsappNumber = site.phone.replace('+', '')
 
 export default function FloatingButtons() {
+  const [heroVisible, setHeroVisible] = useState(true)
+
+  useEffect(() => {
+    const hero = document.querySelector('.hero')
+    if (!hero || !('IntersectionObserver' in window)) {
+      setHeroVisible(false)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeroVisible(entry.isIntersecting),
+      { threshold: 0.01 },
+    )
+    observer.observe(hero)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="float-actions" aria-label="Quick contact">
+    <div className={`float-actions${heroVisible ? ' is-hero-visible' : ''}`} aria-label="Quick contact">
       <a className="float-call" href={`tel:${site.phone}`} aria-label="Call Khatu Waada">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
           <path d="M6.5 3.5 9 6.2l-1.6 1.6a12 12 0 0 0 8.8 8.8L18 15l2.7 2.5v3A2 2 0 0 1 18.8 23 17 17 0 0 1 1 5.2 2 2 0 0 1 3 3.5h3.5z" />

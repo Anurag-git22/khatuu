@@ -1,4 +1,5 @@
 import hero from '../assets/images/hero.jpg'
+import heroMobile from '../assets/images/hero-mobile.jpg'
 import interior from '../assets/images/interior.jpg'
 import courtyard from '../assets/images/courtyard.jpg'
 import g03 from '../assets/images/g03.jpg'
@@ -54,6 +55,7 @@ const site = {
   ],
   hero: {
     image: hero,
+    mobileImage: heroMobile,
     alt: 'Night view of the Khatu Waada heritage house in the rain, Chiplun, Konkan',
   },
   about: {

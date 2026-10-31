@@ -5,7 +5,7 @@ import Reveal from './Reveal'
 export default function Location() {
   return (
     <section id="location">
-      <div className="wrap location-grid">
+      <div className="container location-grid">
         <Reveal>
           <iframe
             className="map-frame"

@@ -33,7 +33,7 @@ export default function Contact() {
 
   return (
     <section id="contact">
-      <div className="wrap contact-grid">
+      <div className="container contact-grid">
         <Reveal>
           <p className="kicker">Contact</p>
           <h2 className="section-title">{site.contactIntro}</h2>

@@ -5,7 +5,7 @@ import Reveal from './Reveal'
 export default function Rooms() {
   return (
     <section id="rooms" className="band">
-      <div className="wrap">
+      <div className="container">
         <p className="kicker">Stay</p>
         <h2 className="section-title">Rooms &amp; stay</h2>
         <p className="lede">{site.roomsIntro}</p>

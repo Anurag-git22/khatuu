@@ -53,7 +53,7 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="band">
-      <div className="wrap">
+      <div className="container">
         <p className="kicker">Photographs</p>
         <h2 className="section-title">Gallery</h2>
         <p className="lede">{site.galleryIntro}</p>

@@ -34,7 +34,7 @@ const icons = {
 export default function Amenities() {
   return (
     <section id="amenities">
-      <div className="wrap">
+      <div className="container">
         <p className="kicker">On the property</p>
         <h2 className="section-title">Amenities</h2>
         <p className="lede">{site.amenitiesIntro}</p>

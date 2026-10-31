@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <footer>
-      <div className="wrap footer-inner">
+      <div className="container footer-inner">
         <div>
           <strong>{site.fullName}</strong>
           <br />

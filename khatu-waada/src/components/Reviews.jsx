@@ -9,7 +9,7 @@ function stars(rating) {
 export default function Reviews() {
   return (
     <section id="reviews" className="band">
-      <div className="wrap">
+      <div className="container">
         <p className="kicker">Guests</p>
         <h2 className="section-title">Reviews</h2>
         <p className="lede">{site.reviewsIntro}</p>

@@ -4,7 +4,7 @@ import Reveal from './Reveal'
 export default function About() {
   return (
     <section id="about">
-      <div className="wrap about-grid">
+      <div className="container about-grid">
         <Reveal>
           <img src={site.about.image} alt={site.about.alt} loading="lazy" decoding="async" />
         </Reveal>
